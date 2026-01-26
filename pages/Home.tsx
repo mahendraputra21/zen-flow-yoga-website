@@ -197,6 +197,89 @@ const Home: React.FC = () => {
         <AdSlot position={AdPosition.HEADER} format={AdFormat.BANNER} />
       </div>
 
+      {/* NEW SECTION: What is Yoga? */}
+      {!selectedMood && (
+        <section className="py-20 bg-gradient-to-b from-white to-ocean-mist/30 overflow-hidden relative">
+           {/* Decorative background element */}
+           <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-ocean-light/5 rounded-full blur-3xl" />
+           <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-blue-200/10 rounded-full blur-3xl" />
+
+           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+               
+               {/* Image Column */}
+               <motion.div 
+                 initial={{ opacity: 0, x: -50 }}
+                 whileInView={{ opacity: 1, x: 0 }}
+                 transition={{ duration: 0.8 }}
+                 viewport={{ once: true }}
+                 className="relative"
+               >
+                 <div className="absolute inset-0 bg-ocean-dark/10 rounded-2xl transform translate-x-4 translate-y-4" />
+                 <img 
+                   src="https://images.unsplash.com/photo-1501597301489-8b75b675ba0a?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                   alt="Peaceful yoga practice" 
+                   className="relative rounded-2xl shadow-xl w-full h-[500px] object-cover"
+                 />
+                 {/* Floating Quote Card */}
+                 <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg max-w-xs border border-slate-50 hidden md:block">
+                    <p className="font-serif italic text-ocean-dark text-lg mb-2">"Yoga is the journey of the self, through the self, to the self."</p>
+                    <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">— The Bhagavad Gita</p>
+                 </div>
+               </motion.div>
+
+               {/* Text Column */}
+               <motion.div 
+                 initial={{ opacity: 0, y: 30 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 transition={{ duration: 0.8, delay: 0.2 }}
+                 viewport={{ once: true }}
+                 className="lg:pl-10"
+               >
+                 <div className="flex items-center space-x-2 mb-4">
+                   <div className="h-px w-8 bg-ocean-light" />
+                   <span className="text-ocean-light font-bold uppercase tracking-widest text-sm">Philosophy</span>
+                 </div>
+                 
+                 <h2 className="text-4xl md:text-5xl font-serif font-bold text-ocean-dark mb-6 leading-tight">
+                   What is Yoga?
+                 </h2>
+                 
+                 <div className="space-y-6 text-lg text-slate-600 leading-relaxed font-light">
+                   <p>
+                     At its core, yoga is more than just physical flexibility or strength. It is a 
+                     <span className="font-medium text-ocean-dark mx-1">conscious technology</span> 
+                     developed over thousands of years to unite the breath, body, and mind.
+                   </p>
+                   <p>
+                     In our modern context, yoga serves as a powerful tool for mental health. By synchronizing movement with deep breathing, we stimulate the vagus nerve, signaling safety to our nervous system and effectively counteracting the stress response.
+                   </p>
+                   <p>
+                     Whether you are holding a warrior pose or simply sitting in silence, you are practicing the art of presence—learning to observe your thoughts without being ruled by them.
+                   </p>
+                 </div>
+
+                 <div className="mt-8 flex flex-wrap gap-4">
+                   <div className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow-sm border border-slate-100 text-sm text-slate-700">
+                      <div className="w-2 h-2 rounded-full bg-ocean-light" />
+                      <span>Breath Control</span>
+                   </div>
+                   <div className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow-sm border border-slate-100 text-sm text-slate-700">
+                      <div className="w-2 h-2 rounded-full bg-ocean-light" />
+                      <span>Mindfulness</span>
+                   </div>
+                   <div className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow-sm border border-slate-100 text-sm text-slate-700">
+                      <div className="w-2 h-2 rounded-full bg-ocean-light" />
+                      <span>Movement</span>
+                   </div>
+                 </div>
+
+               </motion.div>
+             </div>
+           </div>
+        </section>
+      )}
+
       {/* Value Props - Only show if no mood selected to keep interface clean when filtering */}
       {!selectedMood && (
         <section className="bg-white py-16 border-y border-slate-100">
