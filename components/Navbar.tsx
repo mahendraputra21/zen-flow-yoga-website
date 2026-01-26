@@ -8,6 +8,7 @@ const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'Home', path: '/' },
+    { name: 'Pose Library', path: '/poses' },
     { name: 'Breathing Tool', path: '/tools/breathing' },
     { name: 'About', path: '/about' },
   ];
@@ -23,7 +24,7 @@ const Navbar: React.FC = () => {
               <div className="bg-ocean-dark p-1.5 rounded-lg text-white">
                 <Wind size={24} />
               </div>
-              <span className="font-serif font-bold text-xl text-ocean-dark tracking-tight">ZenFlow</span>
+              <span className="font-serif font-bold text-xl text-ocean-dark tracking-tight">ZenFlow Yoga</span>
             </Link>
           </div>
 

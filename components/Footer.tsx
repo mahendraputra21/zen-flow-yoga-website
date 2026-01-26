@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Instagram, Heart } from 'lucide-react';
 
@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
           
           {/* Brand & Mission */}
           <div>
-            <h3 className="text-white text-lg font-serif font-bold mb-4">ZenFlow</h3>
+            <h3 className="text-white text-lg font-serif font-bold mb-4">ZenFlow Yoga</h3>
             <p className="text-sm leading-relaxed mb-4">
               Democratizing mental wellness through accessible yoga routines and science-backed breathing techniques.
             </p>

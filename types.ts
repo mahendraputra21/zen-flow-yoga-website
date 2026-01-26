@@ -1,3 +1,4 @@
+
 export interface Article {
   id: string;
   title: string;
@@ -7,6 +8,18 @@ export interface Article {
   date: string;
   imageUrl: string;
   content: string; // HTML string for rich text simulation
+}
+
+export interface YogaPose {
+  id: string;
+  englishName: string;
+  sanskritName: string;
+  difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
+  category: 'Restorative' | 'Strength' | 'Flexibility' | 'Balance' | 'Backbend';
+  imageUrl: string;
+  benefits: string[];
+  contraindications: string[];
+  steps: string[];
 }
 
 export enum AdPosition {

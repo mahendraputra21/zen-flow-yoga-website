@@ -6,6 +6,8 @@ import Home from './pages/Home';
 import ArticleDetail from './pages/ArticleDetail';
 import BreathingTool from './pages/BreathingTool';
 import About from './pages/About';
+import PoseDirectory from './pages/PoseDirectory';
+import PoseDetail from './pages/PoseDetail';
 import AmbiencePlayer from './components/AmbiencePlayer';
 
 const ScrollToTop = () => {
@@ -26,6 +28,8 @@ const App: React.FC = () => {
           <Route path="/" element={<Home />} />
           <Route path="/article/:id" element={<ArticleDetail />} />
           <Route path="/tools/breathing" element={<BreathingTool />} />
+          <Route path="/poses" element={<PoseDirectory />} />
+          <Route path="/poses/:id" element={<PoseDetail />} />
           <Route path="/about" element={<About />} />
         </Routes>
       </main>

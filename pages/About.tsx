@@ -6,7 +6,7 @@ const About: React.FC = () => {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       
       <div className="text-center mb-16">
-        <h1 className="text-4xl font-serif font-bold text-ocean-dark mb-6">About ZenFlow</h1>
+        <h1 className="text-4xl font-serif font-bold text-ocean-dark mb-6">About ZenFlow Yoga</h1>
         <p className="text-xl text-slate-600 leading-relaxed">
           Democratizing mental wellness through accessible, science-backed yoga and breathing techniques.
         </p>
@@ -20,7 +20,7 @@ const About: React.FC = () => {
           <div>
             <h2 className="text-2xl font-bold text-slate-800 mb-4">Our Mission</h2>
             <p className="text-slate-600 leading-relaxed">
-              We believe that mental peace shouldn't be a luxury. In a world that constantly demands our attention, ZenFlow provides a sanctuary to reconnect with yourself. We curate yoga routines and breathing exercises specifically designed to lower cortisol, manage anxiety, and improve sleep quality—all for free.
+              We believe that mental peace shouldn't be a luxury. In a world that constantly demands our attention, ZenFlow Yoga provides a sanctuary to reconnect with yourself. We curate yoga routines and breathing exercises specifically designed to lower cortisol, manage anxiety, and improve sleep quality—all for free.
             </p>
           </div>
         </div>
@@ -35,7 +35,7 @@ const About: React.FC = () => {
             <h2 className="text-2xl font-bold text-red-800 mb-4">Medical Disclaimer</h2>
             <div className="prose prose-red text-red-700">
               <p className="font-medium mb-4">
-                The content provided on ZenFlow, including text, graphics, images, and other material, is for informational purposes only.
+                The content provided on ZenFlow Yoga, including text, graphics, images, and other material, is for informational purposes only.
               </p>
               <ul className="list-disc pl-5 space-y-2 text-sm">
                 <li>
