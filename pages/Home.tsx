@@ -8,6 +8,7 @@ import ArticleCard from '../components/ArticleCard';
 import PoseCard from '../components/PoseCard';
 import MoodSelector from '../components/MoodSelector';
 import AdSlot from '../components/AdSlot';
+import SEO from '../components/SEO';
 import { AdFormat, AdPosition, MoodTag } from '../types';
 
 const slides = [
@@ -77,6 +78,10 @@ const Home: React.FC = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <SEO 
+        title="Home" 
+        description="Find inner peace with Zen Flow Yoga. Explore science-backed yoga routines, breathing tools, and mental health insights." 
+      />
       
       {/* Hero Slider Section */}
       <section className="relative h-[600px] w-full overflow-hidden bg-ocean-dark group">

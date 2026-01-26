@@ -1,9 +1,12 @@
+
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { articles } from '../data';
 import AdSlot from '../components/AdSlot';
+import SEO from '../components/SEO';
+import SocialShare from '../components/SocialShare';
 import { AdFormat, AdPosition } from '../types';
-import { Calendar, User, ChevronRight, Share2, Clock } from 'lucide-react';
+import { Calendar, User, ChevronRight, Clock } from 'lucide-react';
 
 const ArticleDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -18,8 +21,16 @@ const ArticleDetail: React.FC = () => {
     );
   }
 
+  const currentUrl = window.location.href;
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <SEO 
+        title={article.title} 
+        description={article.excerpt}
+        image={article.imageUrl}
+        type="article"
+      />
       
       {/* Breadcrumb */}
       <nav className="flex items-center text-sm text-slate-500 mb-8">
@@ -49,7 +60,7 @@ const ArticleDetail: React.FC = () => {
               {article.excerpt}
             </p>
 
-            <div className="flex items-center justify-between border-y border-slate-100 py-6">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between border-y border-slate-100 py-6 gap-4">
               <div className="flex items-center space-x-6">
                 <div className="flex items-center">
                   <div className="w-10 h-10 bg-ocean-light/10 rounded-full flex items-center justify-center text-ocean-dark mr-3">
@@ -71,9 +82,7 @@ const ArticleDetail: React.FC = () => {
                 </div>
               </div>
               
-              <button className="text-slate-400 hover:text-ocean-light transition-colors p-2">
-                 <Share2 size={20} />
-              </button>
+              <SocialShare url={currentUrl} title={article.title} />
             </div>
           </header>
 
@@ -87,8 +96,6 @@ const ArticleDetail: React.FC = () => {
           <AdSlot position={AdPosition.IN_ARTICLE} className="mb-10" />
 
           {/* Content Body - Enhanced Typography */}
-          {/* Using font-serif (Merriweather) for body text to improve long-form readability */}
-          {/* Increased prose size (prose-lg/xl) and line-height (leading-relaxed for ~1.5 spacing) */}
           <article className="prose prose-lg md:prose-xl prose-slate max-w-none 
             font-serif text-justify
             prose-headings:font-sans prose-headings:font-bold prose-headings:text-ocean-dark 
@@ -98,6 +105,12 @@ const ArticleDetail: React.FC = () => {
             prose-li:text-slate-700 prose-li:marker:text-ocean-light">
             <div dangerouslySetInnerHTML={{ __html: article.content }} />
           </article>
+
+          {/* Bottom Share Section */}
+          <div className="mt-12 mb-8 pt-8 border-t border-slate-100">
+             <h4 className="font-serif font-bold text-slate-800 mb-4">Share this article</h4>
+             <SocialShare url={currentUrl} title={article.title} />
+          </div>
 
           {/* Ad Slot 3 */}
           <AdSlot position={AdPosition.IN_ARTICLE} className="my-12" />
