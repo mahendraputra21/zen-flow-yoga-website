@@ -10,6 +10,7 @@ export const articles: Article[] = [
     date: 'Oct 12, 2023',
     excerpt: 'Discover a 10-minute sequence designed to lower cortisol levels and prepare your body for deep, restorative sleep.',
     imageUrl: 'https://images.unsplash.com/photo-1511978293554-7b92f19bd77d?auto=format&fit=crop&q=80&w=1200',
+    tags: ['Insomnia', 'Tired', 'Stressed'],
     content: `
       <p>Sleep is the foundation of mental health. When we are sleep-deprived, our emotional regulation suffers, making anxiety and stress harder to manage. Yoga Nidra and gentle restorative poses can signal to your parasympathetic nervous system that it is time to rest.</p>
       
@@ -30,6 +31,7 @@ export const articles: Article[] = [
     date: 'Nov 05, 2023',
     excerpt: 'Learn how specific breathing techniques can interrupt the panic loop and ground you in the present moment.',
     imageUrl: 'https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&q=80&w=1200',
+    tags: ['Anxious', 'Stressed'],
     content: `
       <p>A panic attack can feel like a heart attack. The chest tightens, the breath becomes shallow, and the mind races. The key to stopping a panic attack is to take control of the breath.</p>
       
@@ -48,6 +50,7 @@ export const articles: Article[] = [
     date: 'Dec 01, 2023',
     excerpt: 'Start your day with intention. This energizing flow clears brain fog and sets a positive tone for the day ahead.',
     imageUrl: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=1200',
+    tags: ['Tired', 'Stiff'],
     content: `
       <p>How you start your morning often dictates the rest of your day. Instead of reaching for your phone immediately, try 10 minutes of movement to wake up the body and mind.</p>
       
@@ -67,6 +70,7 @@ export const yogaPoses: YogaPose[] = [
     difficulty: "Beginner",
     category: "Restorative",
     imageUrl: "https://plus.unsplash.com/premium_photo-1672037535190-bd9a68a284e3?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    tags: ['Anxious', 'Stressed', 'Insomnia', 'Stiff'],
     benefits: [
       "Gently stretches the hips, thighs, and ankles.",
       "Calms the brain and helps relieve stress and fatigue.",
@@ -91,6 +95,7 @@ export const yogaPoses: YogaPose[] = [
     difficulty: "Beginner",
     category: "Strength",
     imageUrl: "https://images.unsplash.com/photo-1561049501-e1f96bdd98fd?auto=format&fit=crop&q=80&w=1200",
+    tags: ['Tired', 'Stiff'],
     benefits: [
       "Calms the brain and helps relieve stress and mild depression.",
       "Energizes the body.",
@@ -117,7 +122,8 @@ export const yogaPoses: YogaPose[] = [
     sanskritName: "Virabhadrasana II",
     difficulty: "Intermediate",
     category: "Strength",
-    imageUrl: "https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?auto=format&fit=crop&q=80&w=1200",
+    imageUrl: "https://plus.unsplash.com/premium_photo-1665990295018-5d5e62cec8e9?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    tags: ['Tired', 'Stiff'],
     benefits: [
       "Strengthens and stretches the legs and ankles.",
       "Stretches the groins, chest and lungs, shoulders.",
@@ -144,6 +150,7 @@ export const yogaPoses: YogaPose[] = [
     difficulty: "Beginner",
     category: "Balance",
     imageUrl: "https://images.unsplash.com/photo-1599447292180-45fd84092ef0?auto=format&fit=crop&q=80&w=1200",
+    tags: ['Anxious', 'Stressed'],
     benefits: [
       "Strengthens thighs, calves, ankles, and spine.",
       "Stretches the groins and inner thighs, chest and shoulders.",
@@ -171,6 +178,7 @@ export const yogaPoses: YogaPose[] = [
     difficulty: "Beginner",
     category: "Restorative",
     imageUrl: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&q=80&w=1200",
+    tags: ['Insomnia', 'Stressed', 'Anxious', 'Tired'],
     benefits: [
       "Calms the brain and helps relieve stress and mild depression.",
       "Relaxes the body.",
@@ -196,6 +204,7 @@ export const yogaPoses: YogaPose[] = [
     difficulty: "Beginner",
     category: "Backbend",
     imageUrl: "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&fit=crop&q=80&w=1200",
+    tags: ['Stiff', 'Tired'],
     benefits: [
       "Strengthens the spine.",
       "Stretches chest and lungs, shoulders, and abdomen.",

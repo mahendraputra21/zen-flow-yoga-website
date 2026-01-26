@@ -1,11 +1,14 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Brain, Heart, ShieldCheck, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
-import { articles } from '../data';
+import { articles, yogaPoses } from '../data';
 import ArticleCard from '../components/ArticleCard';
+import PoseCard from '../components/PoseCard';
+import MoodSelector from '../components/MoodSelector';
 import AdSlot from '../components/AdSlot';
-import { AdFormat, AdPosition } from '../types';
+import { AdFormat, AdPosition, MoodTag } from '../types';
 
 const slides = [
   {
@@ -33,6 +36,7 @@ const slides = [
 
 const Home: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [selectedMood, setSelectedMood] = useState<MoodTag | null>(null);
   const { scrollY } = useScroll();
   
   // Smooth out the scroll value using physics-based spring
@@ -43,7 +47,6 @@ const Home: React.FC = () => {
   });
   
   // Parallax transforms using smoothed scroll
-  // We map 0-600px scroll to 0-300px translation
   const bgY = useTransform(scrollYSmooth, [0, 600], [0, 300]);
   const textY = useTransform(scrollYSmooth, [0, 600], [0, 100]);
 
@@ -64,6 +67,14 @@ const Home: React.FC = () => {
     }
   };
 
+  const filteredArticles = selectedMood 
+    ? articles.filter(a => a.tags.includes(selectedMood)) 
+    : articles;
+  
+  const filteredPoses = selectedMood
+    ? yogaPoses.filter(p => p.tags.includes(selectedMood))
+    : [];
+
   return (
     <div className="flex flex-col min-h-screen">
       
@@ -71,13 +82,6 @@ const Home: React.FC = () => {
       <section className="relative h-[600px] w-full overflow-hidden bg-ocean-dark group">
         
         {/* Parallax Background Container */}
-        {/* 
-            Geometry Fix for Parallax:
-            To prevent gaps when translating 'y' downwards by up to 300px, 
-            we must position the top upwards by 300px (-50% of 600px).
-            We also increase height to 150% (900px) to cover the container 
-            even when shifted.
-        */}
         <motion.div 
           style={{ y: bgY }}
           className="absolute -top-[50%] left-0 w-full h-[150%] z-0"
@@ -95,7 +99,6 @@ const Home: React.FC = () => {
                 src={slides[currentSlide].image} 
                 alt="Yoga background" 
                 className="w-full h-full object-cover"
-                // Subtle persistent Ken Burns effect
                 initial={{ scale: 1.05 }}
                 animate={{ scale: 1.1 }}
                 transition={{ duration: 8, ease: "linear" }}
@@ -176,64 +179,118 @@ const Home: React.FC = () => {
           ))}
         </div>
       </section>
+      
+      {/* Mood Selector Section */}
+      <section className="bg-ocean-mist border-b border-ocean-light/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <MoodSelector selectedMood={selectedMood} onSelect={setSelectedMood} />
+        </div>
+      </section>
 
       {/* Ad Slot 1 */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <AdSlot position={AdPosition.HEADER} format={AdFormat.BANNER} />
       </div>
 
-      {/* Value Props */}
-      <section className="bg-white py-16 border-y border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-6">
-              <div className="bg-ocean-mist w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-ocean-dark">
-                <ShieldCheck size={32} />
+      {/* Value Props - Only show if no mood selected to keep interface clean when filtering */}
+      {!selectedMood && (
+        <section className="bg-white py-16 border-y border-slate-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="text-center p-6">
+                <div className="bg-ocean-mist w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-ocean-dark">
+                  <ShieldCheck size={32} />
+                </div>
+                <h3 className="text-lg font-bold text-slate-800 mb-2">Science-Backed</h3>
+                <p className="text-slate-600 text-sm">
+                  Techniques rooted in parasympathetic nervous system regulation.
+                </p>
               </div>
-              <h3 className="text-lg font-bold text-slate-800 mb-2">Science-Backed</h3>
-              <p className="text-slate-600 text-sm">
-                Techniques rooted in parasympathetic nervous system regulation.
-              </p>
-            </div>
-            <div className="text-center p-6">
-              <div className="bg-ocean-mist w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-ocean-dark">
-                <Heart size={32} />
+              <div className="text-center p-6">
+                <div className="bg-ocean-mist w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-ocean-dark">
+                  <Heart size={32} />
+                </div>
+                <h3 className="text-lg font-bold text-slate-800 mb-2">Beginner Friendly</h3>
+                <p className="text-slate-600 text-sm">
+                  No flexibility required. Simple movements accessible to everyone.
+                </p>
               </div>
-              <h3 className="text-lg font-bold text-slate-800 mb-2">Beginner Friendly</h3>
-              <p className="text-slate-600 text-sm">
-                No flexibility required. Simple movements accessible to everyone.
-              </p>
-            </div>
-            <div className="text-center p-6">
-              <div className="bg-ocean-mist w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-ocean-dark">
-                <Brain size={32} />
+              <div className="text-center p-6">
+                <div className="bg-ocean-mist w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-ocean-dark">
+                  <Brain size={32} />
+                </div>
+                <h3 className="text-lg font-bold text-slate-800 mb-2">Mental Focus</h3>
+                <p className="text-slate-600 text-sm">
+                  Designed specifically to clear brain fog and reduce rumination.
+                </p>
               </div>
-              <h3 className="text-lg font-bold text-slate-800 mb-2">Mental Focus</h3>
-              <p className="text-slate-600 text-sm">
-                Designed specifically to clear brain fog and reduce rumination.
-              </p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* Featured Content */}
+      {/* Featured Content / Filtered Results */}
       <section id="articles" className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-end mb-10">
-          <div>
-            <h2 className="text-3xl font-serif font-bold text-ocean-dark">Latest Insights</h2>
-            <p className="text-slate-500 mt-2">Expert guides for your mental wellness journey.</p>
+          <div className="animate-fade-in">
+            <h2 className="text-3xl font-serif font-bold text-ocean-dark">
+              {selectedMood ? 'Recommended for You' : 'Latest Insights'}
+            </h2>
+            <p className="text-slate-500 mt-2">
+              {selectedMood 
+                ? `Curated resources to help when you are feeling ${selectedMood.toLowerCase()}.` 
+                : 'Expert guides for your mental wellness journey.'}
+            </p>
           </div>
           <Link to="/" className="hidden sm:flex items-center text-ocean-light font-semibold hover:text-ocean-dark transition-colors">
-            View All <ArrowRight size={16} className="ml-1" />
+            {selectedMood ? 'View All Content' : 'View All'} <ArrowRight size={16} className="ml-1" />
           </Link>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {articles.map((article) => (
-            <ArticleCard key={article.id} article={article} />
-          ))}
+          <AnimatePresence>
+            {/* Articles */}
+            {filteredArticles.map((article) => (
+              <motion.div
+                key={`article-${article.id}`}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ArticleCard article={article} />
+              </motion.div>
+            ))}
+
+            {/* Poses (Only shown when filtered) */}
+            {filteredPoses.map((pose) => (
+              <motion.div
+                key={`pose-${pose.id}`}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+              >
+                <PoseCard pose={pose} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
+
+        {/* Empty State */}
+        {filteredArticles.length === 0 && filteredPoses.length === 0 && (
+           <div className="text-center py-20 bg-white rounded-2xl shadow-sm border border-slate-100">
+             <p className="text-xl text-slate-500">We couldn't find specific resources for this mood right now.</p>
+             <button 
+               onClick={() => setSelectedMood(null)}
+               className="text-ocean-light font-semibold hover:underline mt-2"
+             >
+               View all content
+             </button>
+           </div>
+        )}
       </section>
 
     </div>

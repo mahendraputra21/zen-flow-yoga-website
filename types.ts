@@ -1,4 +1,6 @@
 
+export type MoodTag = 'Anxious' | 'Tired' | 'Insomnia' | 'Stiff' | 'Stressed';
+
 export interface Article {
   id: string;
   title: string;
@@ -8,6 +10,7 @@ export interface Article {
   date: string;
   imageUrl: string;
   content: string; // HTML string for rich text simulation
+  tags: MoodTag[];
 }
 
 export interface YogaPose {
@@ -20,6 +23,7 @@ export interface YogaPose {
   benefits: string[];
   contraindications: string[];
   steps: string[];
+  tags: MoodTag[];
 }
 
 export enum AdPosition {
