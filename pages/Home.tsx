@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Brain, Heart, ShieldCheck, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, Brain, Activity, Moon, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
 import { articles, yogaPoses } from '../data';
 import ArticleCard from '../components/ArticleCard';
@@ -217,7 +217,7 @@ const Home: React.FC = () => {
                >
                  <div className="absolute inset-0 bg-ocean-dark/10 rounded-2xl transform translate-x-4 translate-y-4" />
                  <img 
-                   src="https://images.unsplash.com/photo-1501597301489-8b75b675ba0a?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                   src="https://images.unsplash.com/photo-1501597301489-8b75b675ba0a?q=80&w=1169&auto=format&fit=crop" 
                    alt="Peaceful yoga practice" 
                    className="relative rounded-2xl shadow-xl w-full h-[500px] object-cover"
                  />
@@ -280,39 +280,83 @@ const Home: React.FC = () => {
         </section>
       )}
 
-      {/* Value Props - Only show if no mood selected to keep interface clean when filtering */}
+      {/* NEW SECTION: Why Yoga? (Replacing old Value Props) */}
       {!selectedMood && (
-        <section className="bg-white py-16 border-y border-slate-100">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center p-6">
-                <div className="bg-ocean-mist w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-ocean-dark">
-                  <ShieldCheck size={32} />
-                </div>
-                <h3 className="text-lg font-bold text-slate-800 mb-2">Science-Backed</h3>
-                <p className="text-slate-600 text-sm">
-                  Techniques rooted in parasympathetic nervous system regulation.
-                </p>
-              </div>
-              <div className="text-center p-6">
-                <div className="bg-ocean-mist w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-ocean-dark">
-                  <Heart size={32} />
-                </div>
-                <h3 className="text-lg font-bold text-slate-800 mb-2">Beginner Friendly</h3>
-                <p className="text-slate-600 text-sm">
-                  No flexibility required. Simple movements accessible to everyone.
-                </p>
-              </div>
-              <div className="text-center p-6">
-                <div className="bg-ocean-mist w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 text-ocean-dark">
-                  <Brain size={32} />
-                </div>
-                <h3 className="text-lg font-bold text-slate-800 mb-2">Mental Focus</h3>
-                <p className="text-slate-600 text-sm">
-                  Designed specifically to clear brain fog and reduce rumination.
-                </p>
-              </div>
+        <section className="py-24 bg-ocean-dark relative overflow-hidden border-t border-white/10">
+          {/* Background decorations */}
+          <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20 pointer-events-none">
+            <div className="absolute -top-24 -left-24 w-96 h-96 bg-ocean-light rounded-full blur-3xl" />
+            <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-400 rounded-full blur-3xl" />
+          </div>
+
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center mb-16">
+              <span className="text-ocean-light font-bold uppercase tracking-widest text-sm">Benefits</span>
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mt-3 mb-6">Why Practice Yoga?</h2>
+              <p className="text-ocean-mist/80 max-w-2xl mx-auto text-lg leading-relaxed font-light">
+                Beyond physical flexibility, yoga is a powerful practice for mental resilience. Here is how it transforms your well-being from the inside out.
+              </p>
             </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+               {/* Card 1: Nervous System */}
+               <motion.div 
+                 initial={{ opacity: 0, y: 20 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 transition={{ duration: 0.5, delay: 0 }}
+                 viewport={{ once: true }}
+                 className="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-all duration-300 group hover:shadow-2xl hover:shadow-ocean-light/10 hover:-translate-y-1"
+               >
+                 <div className="bg-gradient-to-br from-ocean-light to-ocean-dark w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform shadow-lg">
+                   <Activity size={28} />
+                 </div>
+                 <h3 className="text-xl font-bold text-white mb-3">Nervous System Regulation</h3>
+                 <p className="text-ocean-mist/70 leading-relaxed font-light">
+                   Shifts your body from "fight or flight" to "rest and digest" by stimulating the vagus nerve through controlled breathing and movement.
+                 </p>
+               </motion.div>
+
+               {/* Card 2: Emotional Balance */}
+               <motion.div 
+                 initial={{ opacity: 0, y: 20 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 transition={{ duration: 0.5, delay: 0.1 }}
+                 viewport={{ once: true }}
+                 className="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-all duration-300 group hover:shadow-2xl hover:shadow-ocean-light/10 hover:-translate-y-1"
+               >
+                 <div className="bg-gradient-to-br from-ocean-light to-ocean-dark w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform shadow-lg">
+                   <Brain size={28} />
+                 </div>
+                 <h3 className="text-xl font-bold text-white mb-3">Emotional Resilience</h3>
+                 <p className="text-ocean-mist/70 leading-relaxed font-light">
+                   Teaches you to sit with discomfort and observe emotions without reactivity, building mental fortitude and reducing rumination.
+                 </p>
+               </motion.div>
+
+               {/* Card 3: Better Sleep */}
+               <motion.div 
+                 initial={{ opacity: 0, y: 20 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 transition={{ duration: 0.5, delay: 0.2 }}
+                 viewport={{ once: true }}
+                 className="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-all duration-300 group hover:shadow-2xl hover:shadow-ocean-light/10 hover:-translate-y-1"
+               >
+                 <div className="bg-gradient-to-br from-ocean-light to-ocean-dark w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform shadow-lg">
+                   <Moon size={28} />
+                 </div>
+                 <h3 className="text-xl font-bold text-white mb-3">Deep Restoration</h3>
+                 <p className="text-ocean-mist/70 leading-relaxed font-light">
+                   Practices like Yoga Nidra reduce sleep latency and improve quality by physically releasing held tension from the muscles.
+                 </p>
+               </motion.div>
+            </div>
+            
+            {/* Bottom Call to Action */}
+             <div className="mt-16 text-center">
+               <Link to="/tools/breathing" className="inline-flex items-center text-white font-semibold border-b border-ocean-light pb-1 hover:text-ocean-light transition-colors group">
+                  Try a breathing exercise to feel it yourself <ArrowRight size={16} className="ml-2 transform group-hover:translate-x-1 transition-transform" />
+               </Link>
+             </div>
           </div>
         </section>
       )}
