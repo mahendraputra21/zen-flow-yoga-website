@@ -66,7 +66,7 @@ export const yogaPoses: YogaPose[] = [
     sanskritName: "Balasana",
     difficulty: "Beginner",
     category: "Restorative",
-    imageUrl: "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?auto=format&fit=crop&q=80&w=1200",
+    imageUrl: "https://plus.unsplash.com/premium_photo-1672037535190-bd9a68a284e3?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     benefits: [
       "Gently stretches the hips, thighs, and ankles.",
       "Calms the brain and helps relieve stress and fatigue.",
