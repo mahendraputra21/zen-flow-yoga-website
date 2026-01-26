@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import ArticleDetail from './pages/ArticleDetail';
 import BreathingTool from './pages/BreathingTool';
 import About from './pages/About';
+import AmbiencePlayer from './components/AmbiencePlayer';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -28,6 +29,7 @@ const App: React.FC = () => {
           <Route path="/about" element={<About />} />
         </Routes>
       </main>
+      <AmbiencePlayer />
       <Footer />
     </div>
   );
